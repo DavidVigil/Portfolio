@@ -1,47 +1,49 @@
 # -*- coding: latin-1 -*-
-
-def cesarCifrar(texto):
+# ---------- Cifrado y descifrado César con K = 3 ----------
+def cesarCifrar(texto): #Esta función recibe el texto claro y realiza una sustitución desplazando 3 veces cada letra en el abecedario
     result = ""
     for letra in texto:
-        if letra in ABC:
-            result += ABC[(ABC.index(letra)+3)%len(ABC)]
-        elif letra in abc:
-            result += abc[(abc.index(letra)+3)%len(abc)]
+        if letra in ABC: #Revisamos si la letra se encuentra en el abecedario que contiene mayúsculas, números y el espacio
+            result += ABC[(ABC.index(letra)+3)%len(ABC)] #Se suma un 3 para obtener la letra cifrada
+        elif letra in abc: #Revisamos si la letra se encuentra en el abecedario que contiene minúsculas
+            result += abc[(abc.index(letra)+3)%len(abc)] #Se suma un 3 para obtener la letra cifrada
         else:
-            result += letra
+            result += letra #En caso de haber colocado comillas, puntos u otros signos de puntuación, se incluyen directamente en el texto cifrado
     return result
 
-def cesarDescifrar(texto):
+def cesarDescifrar(texto): #Esta función descifra un mensaje cifrado con el algoritmo César simple. 
     result = ""
     for letra in texto:
-        if letra in ABC:
-            result += ABC[(ABC.index(letra)-3)%len(ABC)]
-        elif letra in abc:
-            result += abc[(abc.index(letra)-3)%len(abc)]
+        if letra in ABC: #Revisamos si la letra se encuentra en el abecedario que contiene mayúsculas, números y el espacio
+            result += ABC[(ABC.index(letra)-3)%len(ABC)] #Se resta un 3 para obtener la letra original
+        elif letra in abc: #Revisamos si la letra se encuentra en el abecedario que contiene minúsculas
+            result += abc[(abc.index(letra)-3)%len(abc)] #Se resta un 3 para obtener la letra original
         else:
-            result += letra
+            result += letra #En caso de haber colocado comillas, puntos u otros signos de puntuación, se incluyen directamente en el texto cifrado
     return result
 
-def cesarClaveCifrar(texto, clave):
+# ---------- Cifrado y descifrado César con clave ----------
+
+def cesarClaveCifrar(texto, clave): #Esta función cifra a partir de un abecedario que se construye con una clave
     result = ""
     for i in clave:
+        if i.upper() not in Abc: #Revisa si la letra en la clave se encuentra en el abecedario que comienza con la clave
+            if i==" ": #Si la letra en cuestión es un espacio, no lo agrega a la clave. Esto es opcional si se incluye el espacio como elemento del abecedario
+                continue #Sale de esta iteración del ciclo for y empieza la siguiente
+            Abc.append(i.upper()) #Agrega la letra a el abecedario clave
+    for i in ABC: #Este ciclo for agrega el resto de las letras del abecedario a el abecedario clave. De esta forma el abecedario comienza con las letras de la clave (sin repetirse)
         if i.upper() not in Abc:
-            if i==" ":
-                continue
             Abc.append(i.upper())
-    for i in ABC:
-        if i.upper() not in Abc:
-            Abc.append(i.upper())
-    print("Abecedario con clave: ", Abc)
-    print(len(Abc))
-    for letra in texto:
+    print("Abecedario con clave: ", Abc) #Mostramos el abecedario con el que se hará el cifrado
+    #print(len(Abc)) Esta instrucción nos sirve para saber con qué módulo se trabaja
+    for letra in texto: #Este ciclo crea el mensaje con el desplazamiento k = 3. Esto se puede mejorar si llamamos a la función cesarCifrar. Para fines de esta tarea se realizó por separado
         if letra in ABC or letra in abc:
             result += Abc[((Abc.index(letra.upper())+3)%len(ABC))]
         else:
             result += letra
     return result
 
-def cesarClaveDescifrar(texto):
+def cesarClaveDescifrar(texto): #Esta función descifra un texto que se cifró utilizando un corrimiento de k = 3 y una clave. Puede ser reemplazada por cesarDescifrar si se agrega un abecedario como parámetro de la función
     result = ""
     for letra in texto:
         if letra in ABC or letra in abc:
@@ -50,7 +52,11 @@ def cesarClaveDescifrar(texto):
             result += letra
     return result
 
-def cesarIsometricoCifrar():
+# ---------- Cifrado y descifrado utilizando algoritmo César isométrico ----------
+#Este algoritmo utiliza una clave, suma los números de las posiciones que ocupa la letra original y la de la clave, y realiza el módulo para obtener la letra nueva
+#De ser necesario, la clave se debe repetir hasta cubrir en su totalidad la extensión del mensaje en claro
+
+def cesarIsometricoCifrar(): #Esta función cifra un texto claro pidiendo una clave y un texto
     result = ""
     llave = []
     mensaje = []
