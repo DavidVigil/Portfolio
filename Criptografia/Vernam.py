@@ -1,3 +1,4 @@
+#Desarrollado por David Vigil 05/09/2024
 def cifrarVernam():
     result = ""
     llave = []
