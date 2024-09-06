@@ -1,0 +1,11 @@
+En esta carpeta se encuentran los códigos realizados para la clase de criptografía.
+A continuación se muestra una descripción breve de los archivos
+  Cesar.py:
+    Incluye 6 funciones que conforman el proceso de cifrado y descifrado de 3 formas distintas.
+    Las primeras 2 funciones realizan una sustitución con k=3
+    Las funciones tercera y cuarta realizan una sustitución con k=3 y un abecedario construido a partir de una clave.
+    Las funciones quinta y sexta realizan la suma del valor del mensaje y el valor de la clave, caracter a caracter.
+  HILL.py
+    Incluye funciones para ingresar la clave y el mensaje, además de leer matrices. Las funciones se pueden reducir (TODO)
+  AFIN.py:
+    Incluye 2 funciones, una para cifrar y una para descifrar, utilizando la lógica C=am+b, donde M=(C-b)(1/a) y 1/a es el inverso multiplicativo de "a" dentro del módulo 37.
