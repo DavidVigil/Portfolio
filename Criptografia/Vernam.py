@@ -21,8 +21,7 @@ def cifrarVernam(): #Esta función recibe un mensaje y una clave y devuelve el c
         cifrarVernam()
     for i in range(len(mensaje)): #Para cada caracter en el mensaje, se hace una XOR con el caracter correspondiente de la clave
         result += bin(ord(mensaje[i])^(ord(llave[i]))) #El resultado se almacena en la variable result en forma de binario
-    return result.replace("0b"," ") #Se devuelve el resultado, pero se elimina el prefijo 0b para que se pueda visualizar mejor
-        
+    return result.replace("0b"," ") #Se devuelve el resultado, pero se elimina el prefijo 0b para que se pueda visualizar mejor       
 def descifrarVernam(): #Esta función recibe un criptograma y una clave y devuelve el mensaje original (No recibe los datos como parámetros, sino que los solicita al usuario)
     result = ""
     llave = [] #Aquí se almacenará la clave en forma de arreglo, así podemos propagarla de ser necesario
@@ -43,6 +42,9 @@ def descifrarVernam(): #Esta función recibe un criptograma y una clave y devuel
     for i in range(len(criptograma)):
         result += chr(int(criptograma[i],2)^int(ord(llave[i]))) #Para cada cadena de bits en el criptograma, se hace una XOR con el caracter correspondiente de la clave
     return result
-
+print("")
+print("---------- Cifrado Vernam ----------") #Sección de cifrado
 print("Criptograma: ", cifrarVernam()) #Se imprime el criptograma
-print("Mensaje: ", descifrarVernam()) #Se imprime el mensaje claro
+print("")
+print("---------- Descifrado Vernam ----------") #Sección de descifrado
+print("Mensaje claro: ", descifrarVernam()) #Se imprime el mensaje claro
