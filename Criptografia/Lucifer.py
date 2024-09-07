@@ -1,4 +1,4 @@
-#Desarrollado por David Vigil 06/09/2024
+#---------- Desarrollado por David Vigil 06/09/2024 ----------
 #Se usan 2 funciones para separar para obtener bloques de 8 caracteres. Si se desea hacer todo en una función, es necesario modificar el bloque try-except para que se adapte a la longitud del bloque que se desea obtener
 def separarMensaje4(mensaje): #Esta función recibe un mensaje y lo separa en bloques de 4 caracteres
     texto = []
@@ -82,7 +82,6 @@ def pedirP(): #Esta función solicita al usuario la permutación p de 4 dígitos
     else:
         print("La permutación debe ser de 4 dígitos y contener los números del 1 al 4.")
         pedirP() #Si la permutación no cumple con los requisitos, se vuelve a llamar a la función
-
 #Es importante definir el abecedario que se va a utilizar en este algoritmo
 ABC = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','ñ','o','p','q','r','s','t','u','v','w','x','y','z','0','1','2','3','4','5','6','7','8','9',' ',',','.','!','¡','¿','?',';',':','(',')','[',']','{','}','-','_','+','=','*','/','&','%','$','#','@','|','<','>','^','~','`','¬','á','é','í','ó','ú','Á','É','Í','Ó','Ú']
 pinv = ""
@@ -104,5 +103,5 @@ print("Permutación inversa: ", pinv)
 criptograma = input("Ingresa el criptograma que deseas descifrar: ") #Criptograma a descifrar
 texto = separarMensaje4(criptograma)
 texto = agruparMensaje2(texto)
-print("Mensaje claro", cifrarLucifer(texto, ABC, s*-1, pinv, rondas)) #Se imprime el mensaje claro
+print("Mensaje claro: ", cifrarLucifer(texto, ABC, s*-1, pinv, rondas)) #Se imprime el mensaje claro
 

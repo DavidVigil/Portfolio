@@ -1,4 +1,4 @@
-#Desarrollado por David Vigil 05/09/2024
+#---------- Desarrollado por David Vigil 05/09/2024 ----------
 def cifrarVernam(): #Esta función recibe un mensaje y una clave y devuelve el criptograma en binario (No recibe los datos como parámetros, sino que los solicita al usuario)
     result = ""
     llave = [] #Aquí se almacenará la clave en forma de arreglo, así podemos propagarla de ser necesario
