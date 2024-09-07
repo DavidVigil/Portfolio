@@ -7,7 +7,22 @@ def cifrarAfin(mensaje, a, b): #Función para cifrar utilizando una función af�
         if letra.upper() in ABC:
             letraCifrada = ABC[(ABC.index(letra.upper())*a+b)%len(ABC)] #Fórmula para cifrar utilizando una función afín.
             result += str(letraCifrada)
-        else:    
+        else: #Este else reemplaza las letras con acentos por letras sin acentos, para que puedan ser cifradas.
+            if letra == "á" or letra == "Á":
+                result += ABC[(ABC.index("A")*a+b)%len(ABC)]
+                continue
+            elif letra == "é" or letra == "É":
+                result += ABC[(ABC.index("E")*a+b)%len(ABC)]
+                continue
+            elif letra == "í" or letra == "Í":
+                result += ABC[(ABC.index("I")*a+b)%len(ABC)]
+                continue
+            elif letra == "ó" or letra == "Ó":
+                result += ABC[(ABC.index("O")*a+b)%len(ABC)]
+                continue
+            elif letra == "ú" or letra == "Ú":
+                result += ABC[(ABC.index("U")*a+b)%len(ABC)]
+                continue
             result += letra #Incluye los caracteres que no están en el alfabeto, pero no los cifra. Esto es útil para los espacios.
     return result
 
@@ -22,12 +37,15 @@ def descifrarAfin(criptograma, a, b): #Función para descifrar utilizando una fu
         else:
             result += letra #Incluye los caracteres que no están en el alfabeto, pero no los descifra. Esto es útil para los espacios.
     return result
-
+print("")
+print("---------- Cifrado Afin ----------") #Sección de cifrado
 #a debe ser <= 36
 #Aquí se utiliza a=1 y b=7 porque así fue requerido en el ejercicio. A puede ser cualquier valor entre 1 y 36.
-a=1 #Aquí se pueden solicitar los valores de a y b al usuario, indicando que a debe ser <= 36 y b puede ser cualquier valor.
-b=7 #En este ejercicio son 1 y 7 respectivamente.
+a = int(input("Ingresa el valor de a: ")) #Aquí se pueden solicitar los valores de a y b al usuario, indicando que a debe ser <= 36 y b puede ser cualquier valor.
+b = int(input("Ingresa el valor de b: ")) #En este ejercicio son 1 y 7 respectivamente.
 mensaje = input("Introduce el mensaje a cifrar: ") #Solicitamos el mensaje a cifrar
-print(cifrarAfin(mensaje, a, b)) #Imprimimos el criptograma utilizando la función cifrarAfin
+print("Criptograma: ", cifrarAfin(mensaje, a, b)) #Imprimimos el criptograma utilizando la función cifrarAfin
+print("")
+print("---------- Descifrado Afin ----------") #Sección de descifrado
 criptograma = input("Introduce el criptograma a descifrar: ") #Solicitamos el criptograma a descifrar
-print(descifrarAfin(criptograma, a, b)) #Imprimimos el mensaje descifrado utilizando la función descifrarAfin
+print("Mensaje claro: ", descifrarAfin(criptograma, a, b)) #Imprimimos el mensaje descifrado utilizando la función descifrarAfin
